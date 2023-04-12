@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<persons>
+    <person>
+        <surname>Bardziński</surname>
+        <name>Wojciech</name>
+        <stated_as lang="pt">Manuel Abdanho</stated_as>
+        <coat_of_arms>Abdank</coat_of_arms>
+        <date_of_birth>1724</date_of_birth>
+        <date_of_death>1809</date_of_death>
+    </person>
+    <person>
+        <surname>Ankwicz</surname>
+        <name>Walenty</name>
+        <coat_of_arms>Abdank</coat_of_arms>
+        <date_of_birth>1720</date_of_birth>
+        <date_of_death>1790</date_of_death>
+        <stated_as lang="cs">Matěj Abdank-Novák</stated_as>
+    </person>
+</persons>
