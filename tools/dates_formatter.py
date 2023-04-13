@@ -4,6 +4,14 @@ from typing import Tuple
 
 
 def get_numeric_value_precision_and_qualifier(date: str) -> Tuple[str, str, str]:
+    """
+    Retrieves information about exact date, its precision and optional qualifier
+    Args:
+        date (str): date with optional additional information (about, before, etc.)
+    Returns:
+        Tuple[str, str, str]: date without additional information, date precision (century, year, date)
+        and optional qualifier (applicable Wikibase property name) 
+    """
     roman_numbers = { 'X' :'10', 'XI': '11', 'XII': '10', 'XIII': '13', 'XIV': '14', 
                     'XV': '15', 'XVI': '16', 'XVII': '17', 'XVIII': '18', 'XIX': '19' }
     numeric_value = ''
@@ -45,6 +53,15 @@ def get_numeric_value_precision_and_qualifier(date: str) -> Tuple[str, str, str]
 
 
 def get_wbi_time(numeric_value: str) -> str:
+    """
+    Converts simple date into Wikibase date/time format
+    Heavily inspired by the function 'format_date' from 
+    https://github.com/pjaskulski/wikihub_skrypty/blob/main/src/wikidariahtools.py
+    Args:
+        numeric_value (str): date (century, year, day-month-year)
+    Returns:
+        str: date in Wikibase format '+yyyy-mm-ddT00:00:00Z' (months and days cannot be set to '00')
+    """
     wbi_time = ''
     if len(numeric_value) == 4:
         wbi_time = f"+{numeric_value}-01-01T00:00:00Z"

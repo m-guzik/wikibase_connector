@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from wikibaseintegrator import WikibaseIntegrator, entities, wbi_exceptions, wbi_helpers, wbi_login
+from wikibaseintegrator import WikibaseIntegrator, wbi_login
 from wikibaseintegrator.wbi_config import config as wbi_config
 
 import os
@@ -8,7 +8,6 @@ import xml.etree.ElementTree as ET
 import tools.properties_actions as properties
 import tools.wb_actions as wb_actions
 import tools.xml_parser as xml_parser
-
 
 
 wbi_config['MEDIAWIKI_API_URL'] = 'https://prunus-208.man.poznan.pl/api.php'
@@ -83,11 +82,11 @@ for person in data_file.getroot():
         office, start_date, end_date, date = xml_parser.get_office_details(position)
         properties.add_position_held(added_item, office, start_date, end_date, date)
     
-    # bibliography = person.find('bibliography')   
-    # if bibliography is not None:
-    #     title, pages = xml_parser.get_source_title_and_pages(bibliography)
-    #     properties.add_described_by_source(added_item, title, pages)
+    bibliography = person.find('bibliography')   
+    if bibliography is not None:
+        title, pages = xml_parser.get_source_title_and_pages(bibliography)
+        properties.add_described_by_source(added_item, title, pages)
     
     # added_item.write()
     
-     
+    

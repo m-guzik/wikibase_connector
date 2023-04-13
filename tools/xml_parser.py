@@ -3,6 +3,14 @@ import xml.etree.ElementTree as ET
 
 
 def get_label_and_description(person: ET.Element) -> Tuple[str, str]:
+    """
+    Constructs label (name, surname, location) and description (years of life, offices held) 
+    from the given xml data about a person
+    Args:
+        person (ET.Element): object from xml with all data about one person 
+    Returns:
+        Tuple[str, str]: complete label and description
+    """
     name = person.find('name').text + " " if person.find('name') is not None else ""
     surname = person.find('surname').text + " " if person.find('surname') is not None else ""
     location = person.find('location').text if person.find('location') is not None else ""
@@ -42,6 +50,14 @@ def get_label_and_description(person: ET.Element) -> Tuple[str, str]:
 
 
 def get_office_details(position: ET.Element) -> Tuple[str, str, str, str]:
+    """
+    Checks which details about a position are given and returns texts from them 
+    Args:
+        position (ET.Element): object from xml with all data about one position 
+    Returns:
+        Tuple[str, str, str, str]: texts from existing fields (office, start date, end date, date) 
+        or empty strings 
+    """
     office = position.find('office')
     start_date = position.find('start_date')
     end_date = position.find('end_date')
@@ -65,6 +81,13 @@ def get_office_details(position: ET.Element) -> Tuple[str, str, str, str]:
 
 
 def get_source_title_and_pages(source: ET.Element) -> Tuple[str, str]:
+    """
+    Retrieves data about the source title and related pages from given xml element 
+    Args:
+        source (ET.Element): object from xml with bibliography item data
+    Returns:
+        Tuple[str, str]: source title (perhaps with volume) and specific pages 
+    """
     title = ''
     pages = ''
     bibliography = source.find('biblio')

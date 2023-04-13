@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 from wikibaseintegrator import WikibaseIntegrator, entities, wbi_helpers, wbi_login
 from wikibaseintegrator.wbi_config import config as wbi_config
-from wikibaseintegrator.wbi_exceptions import (MWApiError)
 
 import os
 
